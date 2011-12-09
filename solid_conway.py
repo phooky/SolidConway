@@ -3,6 +3,17 @@
 import re
 import sys
 
+def usage():
+	print """
+Solid Conway is a script for converting a series of RLE files
+representing generations in the game of life into an openSCAD
+program producing a solid object representing the evolution
+of the pattern.
+
+Usage:
+solid_conway.py gen1.rle gen2.rle ...
+"""
+
 preamble = """
 module skew_cube(a,b) {
 	multmatrix(m = [
@@ -98,7 +109,8 @@ def buildParentsForGen(genAbove,z):
 	return buildParents
 
 if len(generations) < 2:
-	print "Need at least two generations"
+	print "Need at least two generations."
+	usage()
 	sys.exit(1)
 
 print preamble
