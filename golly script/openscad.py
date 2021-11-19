@@ -51,7 +51,7 @@ def buildLayerCubes(bottom,top,z,ofile):
 		for (xp,yp) in candidates.intersection(top):
 			ofile.write("span_cube({0},{1},{2},{3},{4});\n".format(x,y,xp,yp,z))
 
-for i in xrange(count-1):
+for i in range(count-1):
 	buildLayerCubes(generations[i],generations[i+1],i,ofile)
 
 ofile.write("} \n")
